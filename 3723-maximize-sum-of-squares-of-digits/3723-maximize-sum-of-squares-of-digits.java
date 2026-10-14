@@ -3,16 +3,15 @@ class Solution {
         if (sum > num * 9) {
             return "";
         }
+
         StringBuilder ans = new StringBuilder();
-        build(num, sum, ans);
-        return ans.toString();
-    }
-    void build(int num, int sum, StringBuilder ans) {
-        if (num == 0) {
-            return;
+
+        for (int i = 0; i < num; i++) {
+            int digit = Math.min(sum, 9);
+            ans.append(digit);
+            sum -= digit;
         }
-        int digit = Math.min(sum, 9);
-        ans.append(digit);
-        build(num - 1, sum - digit, ans);
+
+        return ans.toString();
     }
 }
